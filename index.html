@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecicleTech - Reciclagem de Lixo Eletrônico em SP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- uso da biblioteca Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo_recicletech.png">
+</head>
+<body>
+    <!-- cabeçalho -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-recycle"></i>
+                <h1>RecicleTech</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="active"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#instrucoes"><i class="fas fa-info-circle"></i> Instruções</a></li>
+                    <li><a href="#mapa"><i class="fas fa-map-marker-alt"></i> Pontos de Coleta</a></li>
+                    <li><a href="#estatisticas"><i class="fas fa-chart-line"></i> Meu Impacto</a></li>
+                    <li><a href="#eventos"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- seção hero (destaque principal) -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Reciclagem de Lixo Eletrônico em São Paulo</h2>
+            <p>Encontre pontos de coleta, aprenda a descartar corretamente e acompanhe seu impacto ambiental na maior cidade do Brasil</p>
+            <a href="#mapa" class="btn">Encontrar Pontos de Coleta</a>
+        </div>
+    </section>
+
+    <!-- instruções de descarte -->
+    <section id="instrucoes" class="container">
+        <h2 class="section-title">Como Reciclar Corretamente:</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Aprenda a descartar cada tipo de material e contribua para um meio ambiente mais limpo!</p>
+        
+        <div class="materiais-grid">
+            <div class="material-card fade-in">
+                <i class="fas fa-laptop"></i>
+                <h3>Computadores e Notebooks</h3>
+                <p>Remova seus dados pessoais antes do descarte. Leve a pontos de coleta especializados para que componentes possam ser reutilizados ou descartados corretamente.</p>
+            </div>
+            
+            <div class="material-card fade-in">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Celulares e Tablets</h3>
+                <p>Antes de tudo, faça backup e remova todas as suas informações pessoais. Baterias devem ser descartadas separadamente. Sempre procure pontos de coleta em operadoras ou lojas especializadas.</p>
+            </div>
+            
+            <div class="material-card fade-in">
+                <i class="fas fa-tv"></i>
+                <h3>Televisores e Monitores</h3>
+                <p>Contêm materiais pesados e requerem descarte especializado. Nunca quebre a tela pois isso libera gases tóxicos!</p>
+            </div>
+            
+            <div class="material-card fade-in">
+                <i class="fas fa-battery-full"></i>
+                <h3>Pilhas e Baterias</h3>
+                <p>Nunca descarte no lixo comum. Acumule e leve a pontos de coleta em supermercados, farmácias ou lojas de eletrônicos. Evite vazamentos mantendo-as em embalagens seguras.</p>
+            </div>
+            
+            <div class="material-card fade-in">
+                <i class="fas fa-plug"></i>
+                <h3>Cabos e Acessórios</h3>
+                <p>Podem conter metais valiosos para reciclagem. Separe por tipo (USB, energia, dados) para facilitar a reciclagem.</p>
+            </div>
+            
+            <div class="material-card fade-in">
+                <i class="fas fa-print"></i>
+                <h3>Impressoras e Periféricos</h3>
+                <p>Cartuchos de tinta podem ser recarregados ou reciclados. Equipamentos inteiros devem ser descartados em locais especializados devido aos diversos componentes.</p>
+            </div>
+
+            <div class="material-card fade-in">
+               <i class="fas fa-wine-bottle"></i>
+               <h3>Plástico</h3>
+               <p>Para reciclar plásticos, verifique o símbolo de reciclagem na embalagem e lave antes de descartar. Priorize pontos de coleta específicos para plásticos. Reduza o consumo de plásticos descartáveis.</p>
+            </div>
+    
+            <div class="material-card fade-in">
+                <i class="fas fa-file-alt"></i>
+                <h3>Papel</h3>
+                <p>Papéis limpos, como jornais e revistas, podem ser reciclados. Evite misturar papéis engordurados ou sujos com materiais recicláveis. Separe por tipo quando possível.</p>
+            </div>
+
+            <div class="material-card fade-in">
+                <i class="fas fa-glass-martini-alt"></i>
+                <h3>Vidro</h3>
+                <p>Recicle garrafas e potes de vidro. Lave bem e evite quebrá-los antes de descartar, pois fragmentos podem causar acidentes. Vidro colorido e transparente podem ser separados.</p>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <!-- mapa de pontos de coleta -->
+    <section id="mapa" class="container">
+        <h2 class="section-title">Pontos de Coleta em São Paulo</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Encontre os locais mais próximos para descartar corretamente:</p>
+        
+            <div id="mapa-placeholder">
+                <div class="mapa-carregando">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Carregando mapa...</p>
+                </div>
+            </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <p>Não encontrou um ponto perto de você? <a href="#contato">Entre em contato</a> para sugerir novos locais!</p>
+        </div>
+    </section>
+
+    <br>
+    <!-- estatísticas e impacto -->
+    <section id="estatisticas" class="container">
+        <h2 class="section-title">Meu Impacto Ambiental</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Acompanhe suas contribuições e veja o quanto você está ajudando o meio ambiente!</p>
+        
+        <div class="estatisticas-grid">
+            <div class="estatistica-card fade-in">
+                <i class="fas fa-weight-hanging"></i>
+                <h3>Total Reciclado</h3>
+                <div class="estatistica-valor">24,5 kg</div>
+                <p>de lixo eletrônico desviado de aterros</p>
+                <div class="barra-progresso">
+                    <div class="progresso" style="width: 70%"></div>
+                </div>
+                <p>Meta mensal: 35 kg</p>
+            </div>
+            
+            <div class="estatistica-card fade-in">
+                <i class="fas fa-tree"></i>
+                <h3>CO₂ Evitado</h3>
+                <div class="estatistica-valor">128 kg</div>
+                <p>de emissões de carbono evitadas</p>
+                <div class="barra-progresso">
+                    <div class="progresso" style="width: 55%"></div>
+                </div>
+                <p>Equivale a plantar 4 árvores</p>
+            </div>
+            
+            <div class="estatistica-card fade-in">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Pontos Visitados</h3>
+                <div class="estatistica-valor">7</div>
+                <p>locais de descarte utilizados</p>
+                <div class="barra-progresso">
+                    <div class="progresso" style="width: 40%"></div>
+                </div>
+                <p>Meta: visitar 15 locais diferentes</p>
+            </div>
+            
+            <div class="estatistica-card fade-in">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Dias Consecutivos</h3>
+                <div class="estatistica-valor">18</div>
+                <p>dias praticando o descarte consciente</p>
+                <div class="barra-progresso">
+                    <div class="progresso" style="width: 60%"></div>
+                </div>
+                <p>Meta: 30 dias consecutivos</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="btn"><i class="fas fa-share-alt"></i> Compartilhar Meu Progresso</button>
+        </div>
+    </section>
+
+    <br>
+    <!-- eventos e campanhas -->
+    <section id="eventos" class="container">
+        <h2 class="section-title">Eventos de Reciclagem em SP</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Participe de campanhas e eventos de reciclagem na sua região:</p>
+        
+        <div class="eventos-lista">
+            <div class="evento-card fade-in">
+                <div class="evento-data">
+                    <p>15 JUN</p>
+                </div>
+                <div class="evento-info">
+                    <h3>Dia da Reciclagem Eletrônica</h3>
+                    <p>Campanha de coleta de eletrônicos no Parque Ibirapuera. Traga seus equipamentos para descarte correto.</p>
+                    <div class="evento-local">
+                        <i class="fas fa-map-marker-alt"></i> Parque Ibirapuera - Portão 3
+                    </div>
+                </div>
+            </div>
+            
+            <div class="evento-card fade-in">
+                <div class="evento-data">
+                    <p>13 SET</p>
+                </div>
+                <div class="evento-info">
+                    <h3>Feira de Troca de Eletrônicos</h3>
+                    <p>Traga equipamentos em bom estado para trocar ou doar. Oficinas de conserto e reutilização.</p>
+                    <div class="evento-local">
+                        <i class="fas fa-map-marker-alt"></i> Praça Victor Civita - Pinherios
+                    </div>
+                </div>
+            </div>
+            
+            <div class="evento-card fade-in">
+                <div class="evento-data">
+                    <p>09 NOV</p>
+                </div>
+                <div class="evento-info">
+                    <h3>Workshop: Conserto de Eletrônicos</h3>
+                    <p>Aprenda a reparar dispositivos eletrônicos e aumentar sua vida útil. Inscrições gratuitas!</p>
+                    <div class="evento-local">
+                        <i class="fas fa-map-marker-alt"></i> Centro Cultural São Paulo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <br>
+    <!-- compartilhamento -->
+    <section class="compartilhamento">
+        <div class="container">
+            <h2>Compartilhe!</h2>
+            <p>Inspire amigos e familiares a reciclarem como você:</p>
+            
+            <div class="redes-sociais">
+                <a href="#" class="rede-social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="rede-social"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="rede-social"><i class="fab fa-x"></i></a>
+                <a href="#" class="rede-social"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>RecicleTech</h3>
+                    <p>Promovendo a reciclagem consciente no município de São Paulo.</p>
+                </div>
+                
+                <div class="footer-info">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-envelope"></i> contato@recicletech.com.br</p>
+                    <p><i class="fas fa-phone"></i> (11) 2222-3333</p>
+                </div>
+                
+                <div class="footer-info">
+                    <h3>Links Úteis</h3>
+                    <p><a href="#">Política de Privacidade</a></p>
+                    <p><a href="#">Perguntas Frequentes</a></p>
+                    <p><a href="#">Apoie</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 RecicleTech - Protótipo para Atividade Extensionista, por Sarah Soares.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
