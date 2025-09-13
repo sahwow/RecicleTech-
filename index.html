@@ -34,6 +34,18 @@
                     <li><a href="#eventos"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
                 </ul>
             </nav>
+
+            <!-- No header, após a navegação -->
+            <div class="auth-buttons">
+                <button id="btn-login" class="btn-auth">Entrar</button>
+                <button id="btn-register" class="btn-auth btn-auth-primary">Registrar</button>
+            </div>
+            
+            <div id="user-menu" class="user-menu" style="display: none;">
+                <span id="user-email"></span>
+                <button id="btn-logout">Sair</button>
+            </div>
+
         </div>
     </header>
 
@@ -46,9 +58,46 @@
         </div>
     </section>
 
+
+    <!-- modal para login ou registro -->
+<div id="auth-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Entrar na RecicleTech</h2>
+        
+        <form id="auth-form">
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required>
+            </div>
+            
+            <div id="confirm-password-group" class="form-group" style="display: none;">
+                <label for="confirm-password">Confirmar Senha:</label>
+                <input type="password" id="confirm-password">
+            </div>
+            
+            <button type="submit" id="auth-submit">Entrar</button>
+        </form>
+        
+        <p id="auth-switch">Não tem uma conta? <a href="#" id="switch-to-register">Registre-se</a></p>
+    </div>
+</div>
+
+<!-- menu do usuário logado (inicialmente oculto) -->
+<div id="user-menu" class="user-menu" style="display: none;">
+    <span id="user-email"></span>
+    <button id="btn-logout">Sair</button>
+</div>
+
+
     <!-- instruções de descarte -->
     <section id="instrucoes" class="container">
-        <h2 class="section-title">Como Reciclar Corretamente:</h2>
+        <h2 class="section-title">Como reciclar corretamente? Veja abaixo:</h2>
         <p style="text-align: center; margin-bottom: 30px;">Aprenda a descartar cada tipo de material e contribua para um meio ambiente mais limpo!</p>
         
         <div class="materiais-grid">
@@ -163,18 +212,7 @@
                 <div class="barra-progresso">
                     <div class="progresso" style="width: 40%"></div>
                 </div>
-                <p>Meta: visitar 15 locais diferentes</p>
-            </div>
-            
-            <div class="estatistica-card fade-in">
-                <i class="fas fa-calendar-check"></i>
-                <h3>Dias Consecutivos</h3>
-                <div class="estatistica-valor">18</div>
-                <p>dias praticando o descarte consciente</p>
-                <div class="barra-progresso">
-                    <div class="progresso" style="width: 60%"></div>
-                </div>
-                <p>Meta: 30 dias consecutivos</p>
+                <p>Meta: visitar 10 locais diferentes</p>
             </div>
         </div>
         
@@ -192,7 +230,7 @@
         <div class="eventos-lista">
             <div class="evento-card fade-in">
                 <div class="evento-data">
-                    <p>15 JUN</p>
+                    <p>15 JUN (das 10h ás 16h)</p>
                 </div>
                 <div class="evento-info">
                     <h3>Dia da Reciclagem Eletrônica</h3>
@@ -205,7 +243,7 @@
             
             <div class="evento-card fade-in">
                 <div class="evento-data">
-                    <p>13 SET</p>
+                    <p>13 SET (ás 10:00 hrs)</p>
                 </div>
                 <div class="evento-info">
                     <h3>Feira de Troca de Eletrônicos</h3>
@@ -218,7 +256,7 @@
             
             <div class="evento-card fade-in">
                 <div class="evento-data">
-                    <p>09 NOV</p>
+                    <p>09 NOV (ás 14:00 hrs)</p>
                 </div>
                 <div class="evento-info">
                     <h3>Workshop: Conserto de Eletrônicos</h3>
